@@ -231,14 +231,14 @@ namespace StockManagement
             }
 
             // Set all the control's text's
-            this.Text = StockManagementMenu.Localisation.GetString("SearchWindowTitle");
+            this.Text = Localisation.Localisation.strings.SearchWindowTitle;
 
-            LabelSearchText.Text = StockManagementMenu.Localisation.GetString("SearchWindowMenu_SearchText");
-            CheckUpperLowerCase.Text = StockManagementMenu.Localisation.GetString("SearchWindow_UpperLowerCase");
-            AvailableSearchSheetsTitle.Text = StockManagementMenu.Localisation.GetString("SearchWindow_CurrentGrid");
-            SearchAll.Text = StockManagementMenu.Localisation.GetString("SearchWindow_Button_SearchAll");
-            SearchNext.Text = StockManagementMenu.Localisation.GetString("SearchWindow_Button_SearchNext");
-            CloseForm.Text = StockManagementMenu.Localisation.GetString("SearchWindow_Button_Close");
+            LabelSearchText.Text = Localisation.Localisation.strings.SearchWindowMenu_SearchText;
+            CheckUpperLowerCase.Text = Localisation.Localisation.strings.SearchWindow_UpperLowerCase;
+            AvailableSearchSheetsTitle.Text = Localisation.Localisation.strings.SearchWindow_CurrentGrid;
+            SearchAll.Text = Localisation.Localisation.strings.SearchWindow_Button_SearchAll;
+            SearchNext.Text = Localisation.Localisation.strings.SearchWindow_Button_SearchNext;
+            CloseForm.Text = Localisation.Localisation.strings.SearchWindow_Button_Close;
         }
 
         public void UpdateSearchGrid()

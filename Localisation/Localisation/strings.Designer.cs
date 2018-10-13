@@ -22,7 +22,7 @@ namespace Localisation.Localisation {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class strings {
+    public class strings {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace Localisation.Localisation {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Localisation.Localisation.strings", typeof(strings).Assembly);
@@ -51,7 +51,7 @@ namespace Localisation.Localisation {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace Localisation.Localisation {
         /// <summary>
         ///   Looks up a localized string similar to Stock Management.
         /// </summary>
-        internal static string AboutWindow_ApplicationName {
+        public static string AboutWindow_ApplicationName {
             get {
                 return ResourceManager.GetString("AboutWindow_ApplicationName", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace Localisation.Localisation {
         /// <summary>
         ///   Looks up a localized string similar to Autor:.
         /// </summary>
-        internal static string AboutWindow_Author {
+        public static string AboutWindow_Author {
             get {
                 return ResourceManager.GetString("AboutWindow_Author", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace Localisation.Localisation {
         /// <summary>
         ///   Looks up a localized string similar to walker.st@outlook.com.
         /// </summary>
-        internal static string AboutWindow_AuthorEmail {
+        public static string AboutWindow_AuthorEmail {
             get {
                 return ResourceManager.GetString("AboutWindow_AuthorEmail", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace Localisation.Localisation {
         /// <summary>
         ///   Looks up a localized string similar to About Stock Management.
         /// </summary>
-        internal static string AboutWindowTitle {
+        public static string AboutWindowTitle {
             get {
                 return ResourceManager.GetString("AboutWindowTitle", resourceCulture);
             }
@@ -99,7 +99,7 @@ namespace Localisation.Localisation {
         /// <summary>
         ///   Looks up a localized string similar to Description.
         /// </summary>
-        internal static string AppText_Comment {
+        public static string AppText_Comment {
             get {
                 return ResourceManager.GetString("AppText_Comment", resourceCulture);
             }
@@ -108,7 +108,7 @@ namespace Localisation.Localisation {
         /// <summary>
         ///   Looks up a localized string similar to Last stocktaking.
         /// </summary>
-        internal static string AppText_LastStocktaking {
+        public static string AppText_LastStocktaking {
             get {
                 return ResourceManager.GetString("AppText_LastStocktaking", resourceCulture);
             }
@@ -117,16 +117,25 @@ namespace Localisation.Localisation {
         /// <summary>
         ///   Looks up a localized string similar to Stocktaking overview.
         /// </summary>
-        internal static string AppText_StocktakingOverview {
+        public static string AppText_StocktakingOverview {
             get {
                 return ResourceManager.GetString("AppText_StocktakingOverview", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string asdasdasdasdasd {
+            get {
+                return ResourceManager.GetString("asdasdasdasdasd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Browse.
         /// </summary>
-        internal static string FileImport_BrowseFile {
+        public static string FileImport_BrowseFile {
             get {
                 return ResourceManager.GetString("FileImport_BrowseFile", resourceCulture);
             }
@@ -135,7 +144,7 @@ namespace Localisation.Localisation {
         /// <summary>
         ///   Looks up a localized string similar to Has column names.
         /// </summary>
-        internal static string FileImport_ColumnNames {
+        public static string FileImport_ColumnNames {
             get {
                 return ResourceManager.GetString("FileImport_ColumnNames", resourceCulture);
             }
@@ -144,7 +153,7 @@ namespace Localisation.Localisation {
         /// <summary>
         ///   Looks up a localized string similar to Delimiter:.
         /// </summary>
-        internal static string FileImport_DelimiterCsvTxt {
+        public static string FileImport_DelimiterCsvTxt {
             get {
                 return ResourceManager.GetString("FileImport_DelimiterCsvTxt", resourceCulture);
             }
@@ -153,7 +162,7 @@ namespace Localisation.Localisation {
         /// <summary>
         ///   Looks up a localized string similar to You haven&apos;t chosen a file yet, please choose a file before importing data.
         /// </summary>
-        internal static string FileImport_FileChoose {
+        public static string FileImport_FileChoose {
             get {
                 return ResourceManager.GetString("FileImport_FileChoose", resourceCulture);
             }
@@ -162,7 +171,7 @@ namespace Localisation.Localisation {
         /// <summary>
         ///   Looks up a localized string similar to File format:.
         /// </summary>
-        internal static string FileImport_FileFormat {
+        public static string FileImport_FileFormat {
             get {
                 return ResourceManager.GetString("FileImport_FileFormat", resourceCulture);
             }
@@ -171,7 +180,7 @@ namespace Localisation.Localisation {
         /// <summary>
         ///   Looks up a localized string similar to File path:.
         /// </summary>
-        internal static string FileImport_FilePath {
+        public static string FileImport_FilePath {
             get {
                 return ResourceManager.GetString("FileImport_FilePath", resourceCulture);
             }
@@ -180,7 +189,7 @@ namespace Localisation.Localisation {
         /// <summary>
         ///   Looks up a localized string similar to File import.
         /// </summary>
-        internal static string FileImport_Heading {
+        public static string FileImport_Heading {
             get {
                 return ResourceManager.GetString("FileImport_Heading", resourceCulture);
             }
@@ -189,7 +198,7 @@ namespace Localisation.Localisation {
         /// <summary>
         ///   Looks up a localized string similar to Import data.
         /// </summary>
-        internal static string FileImport_ImportData {
+        public static string FileImport_ImportData {
             get {
                 return ResourceManager.GetString("FileImport_ImportData", resourceCulture);
             }
@@ -198,7 +207,7 @@ namespace Localisation.Localisation {
         /// <summary>
         ///   Looks up a localized string similar to Error during import.
         /// </summary>
-        internal static string FileImport_ImportError {
+        public static string FileImport_ImportError {
             get {
                 return ResourceManager.GetString("FileImport_ImportError", resourceCulture);
             }
@@ -207,7 +216,7 @@ namespace Localisation.Localisation {
         /// <summary>
         ///   Looks up a localized string similar to Sheet:.
         /// </summary>
-        internal static string FileImport_Sheet {
+        public static string FileImport_Sheet {
             get {
                 return ResourceManager.GetString("FileImport_Sheet", resourceCulture);
             }
@@ -216,7 +225,7 @@ namespace Localisation.Localisation {
         /// <summary>
         ///   Looks up a localized string similar to Import file.
         /// </summary>
-        internal static string FileImportTitle {
+        public static string FileImportTitle {
             get {
                 return ResourceManager.GetString("FileImportTitle", resourceCulture);
             }
@@ -225,7 +234,7 @@ namespace Localisation.Localisation {
         /// <summary>
         ///   Looks up a localized string similar to Settings.
         /// </summary>
-        internal static string MainMenu_Button_SettingsButton {
+        public static string MainMenu_Button_SettingsButton {
             get {
                 return ResourceManager.GetString("MainMenu_Button_SettingsButton", resourceCulture);
             }
@@ -234,7 +243,7 @@ namespace Localisation.Localisation {
         /// <summary>
         ///   Looks up a localized string similar to Stock Management.
         /// </summary>
-        internal static string MainMenu_Button_StockManagementButton {
+        public static string MainMenu_Button_StockManagementButton {
             get {
                 return ResourceManager.GetString("MainMenu_Button_StockManagementButton", resourceCulture);
             }
@@ -243,7 +252,7 @@ namespace Localisation.Localisation {
         /// <summary>
         ///   Looks up a localized string similar to Close.
         /// </summary>
-        internal static string OldCustomersMenu_Button_Close {
+        public static string OldCustomersMenu_Button_Close {
             get {
                 return ResourceManager.GetString("OldCustomersMenu_Button_Close", resourceCulture);
             }
@@ -252,7 +261,7 @@ namespace Localisation.Localisation {
         /// <summary>
         ///   Looks up a localized string similar to Reload data.
         /// </summary>
-        internal static string OldCustomersMenu_Button_ReloadData {
+        public static string OldCustomersMenu_Button_ReloadData {
             get {
                 return ResourceManager.GetString("OldCustomersMenu_Button_ReloadData", resourceCulture);
             }
@@ -261,7 +270,7 @@ namespace Localisation.Localisation {
         /// <summary>
         ///   Looks up a localized string similar to Old Customers.
         /// </summary>
-        internal static string OldCustomersMenuTitle {
+        public static string OldCustomersMenuTitle {
             get {
                 return ResourceManager.GetString("OldCustomersMenuTitle", resourceCulture);
             }
@@ -270,7 +279,7 @@ namespace Localisation.Localisation {
         /// <summary>
         ///   Looks up a localized string similar to Close.
         /// </summary>
-        internal static string SearchWindow_Button_Close {
+        public static string SearchWindow_Button_Close {
             get {
                 return ResourceManager.GetString("SearchWindow_Button_Close", resourceCulture);
             }
@@ -279,7 +288,7 @@ namespace Localisation.Localisation {
         /// <summary>
         ///   Looks up a localized string similar to Search all.
         /// </summary>
-        internal static string SearchWindow_Button_SearchAll {
+        public static string SearchWindow_Button_SearchAll {
             get {
                 return ResourceManager.GetString("SearchWindow_Button_SearchAll", resourceCulture);
             }
@@ -288,7 +297,7 @@ namespace Localisation.Localisation {
         /// <summary>
         ///   Looks up a localized string similar to Search next.
         /// </summary>
-        internal static string SearchWindow_Button_SearchNext {
+        public static string SearchWindow_Button_SearchNext {
             get {
                 return ResourceManager.GetString("SearchWindow_Button_SearchNext", resourceCulture);
             }
@@ -297,7 +306,7 @@ namespace Localisation.Localisation {
         /// <summary>
         ///   Looks up a localized string similar to Current grid:.
         /// </summary>
-        internal static string SearchWindow_CurrentGrid {
+        public static string SearchWindow_CurrentGrid {
             get {
                 return ResourceManager.GetString("SearchWindow_CurrentGrid", resourceCulture);
             }
@@ -306,7 +315,7 @@ namespace Localisation.Localisation {
         /// <summary>
         ///   Looks up a localized string similar to Match case.
         /// </summary>
-        internal static string SearchWindow_UpperLowerCase {
+        public static string SearchWindow_UpperLowerCase {
             get {
                 return ResourceManager.GetString("SearchWindow_UpperLowerCase", resourceCulture);
             }
@@ -315,7 +324,7 @@ namespace Localisation.Localisation {
         /// <summary>
         ///   Looks up a localized string similar to Text to seach:.
         /// </summary>
-        internal static string SearchWindowMenu_SearchText {
+        public static string SearchWindowMenu_SearchText {
             get {
                 return ResourceManager.GetString("SearchWindowMenu_SearchText", resourceCulture);
             }
@@ -324,7 +333,7 @@ namespace Localisation.Localisation {
         /// <summary>
         ///   Looks up a localized string similar to Searchwindow.
         /// </summary>
-        internal static string SearchWindowTitle {
+        public static string SearchWindowTitle {
             get {
                 return ResourceManager.GetString("SearchWindowTitle", resourceCulture);
             }
@@ -333,7 +342,7 @@ namespace Localisation.Localisation {
         /// <summary>
         ///   Looks up a localized string similar to Browse.
         /// </summary>
-        internal static string SettingsMenu_BrowseFile {
+        public static string SettingsMenu_BrowseFile {
             get {
                 return ResourceManager.GetString("SettingsMenu_BrowseFile", resourceCulture);
             }
@@ -342,7 +351,7 @@ namespace Localisation.Localisation {
         /// <summary>
         ///   Looks up a localized string similar to Path of the customer data file.
         /// </summary>
-        internal static string SettingsMenu_BrowseFileTitle {
+        public static string SettingsMenu_BrowseFileTitle {
             get {
                 return ResourceManager.GetString("SettingsMenu_BrowseFileTitle", resourceCulture);
             }
@@ -351,7 +360,7 @@ namespace Localisation.Localisation {
         /// <summary>
         ///   Looks up a localized string similar to Data preview:.
         /// </summary>
-        internal static string SettingsMenu_DataPreview {
+        public static string SettingsMenu_DataPreview {
             get {
                 return ResourceManager.GetString("SettingsMenu_DataPreview", resourceCulture);
             }
@@ -360,7 +369,7 @@ namespace Localisation.Localisation {
         /// <summary>
         ///   Looks up a localized string similar to Delimiter:.
         /// </summary>
-        internal static string SettingsMenu_Delimiter {
+        public static string SettingsMenu_Delimiter {
             get {
                 return ResourceManager.GetString("SettingsMenu_Delimiter", resourceCulture);
             }
@@ -369,7 +378,7 @@ namespace Localisation.Localisation {
         /// <summary>
         ///   Looks up a localized string similar to Choose the customer file.
         /// </summary>
-        internal static string SettingsMenu_FileDilalogCustomerFile {
+        public static string SettingsMenu_FileDilalogCustomerFile {
             get {
                 return ResourceManager.GetString("SettingsMenu_FileDilalogCustomerFile", resourceCulture);
             }
@@ -378,7 +387,7 @@ namespace Localisation.Localisation {
         /// <summary>
         ///   Looks up a localized string similar to Additional settings.
         /// </summary>
-        internal static string SettingsMenu_GroupBox_AdditionalSettings {
+        public static string SettingsMenu_GroupBox_AdditionalSettings {
             get {
                 return ResourceManager.GetString("SettingsMenu_GroupBox_AdditionalSettings", resourceCulture);
             }
@@ -387,7 +396,7 @@ namespace Localisation.Localisation {
         /// <summary>
         ///   Looks up a localized string similar to Language.
         /// </summary>
-        internal static string SettingsMenu_Language {
+        public static string SettingsMenu_Language {
             get {
                 return ResourceManager.GetString("SettingsMenu_Language", resourceCulture);
             }
@@ -396,7 +405,7 @@ namespace Localisation.Localisation {
         /// <summary>
         ///   Looks up a localized string similar to Please choose a valid file.
         /// </summary>
-        internal static string SettingsMenu_ValidFile {
+        public static string SettingsMenu_ValidFile {
             get {
                 return ResourceManager.GetString("SettingsMenu_ValidFile", resourceCulture);
             }
@@ -405,7 +414,7 @@ namespace Localisation.Localisation {
         /// <summary>
         ///   Looks up a localized string similar to Settings.
         /// </summary>
-        internal static string SettingsMenuTitle {
+        public static string SettingsMenuTitle {
             get {
                 return ResourceManager.GetString("SettingsMenuTitle", resourceCulture);
             }
@@ -414,7 +423,7 @@ namespace Localisation.Localisation {
         /// <summary>
         ///   Looks up a localized string similar to About.
         /// </summary>
-        internal static string StockManagementMenu_Button_About {
+        public static string StockManagementMenu_Button_About {
             get {
                 return ResourceManager.GetString("StockManagementMenu_Button_About", resourceCulture);
             }
@@ -423,7 +432,7 @@ namespace Localisation.Localisation {
         /// <summary>
         ///   Looks up a localized string similar to Advanced search.
         /// </summary>
-        internal static string StockManagementMenu_Button_AdvancedSearch {
+        public static string StockManagementMenu_Button_AdvancedSearch {
             get {
                 return ResourceManager.GetString("StockManagementMenu_Button_AdvancedSearch", resourceCulture);
             }
@@ -432,7 +441,7 @@ namespace Localisation.Localisation {
         /// <summary>
         ///   Looks up a localized string similar to Search.
         /// </summary>
-        internal static string StockManagementMenu_Button_BasicSearch {
+        public static string StockManagementMenu_Button_BasicSearch {
             get {
                 return ResourceManager.GetString("StockManagementMenu_Button_BasicSearch", resourceCulture);
             }
@@ -441,7 +450,7 @@ namespace Localisation.Localisation {
         /// <summary>
         ///   Looks up a localized string similar to Cancel.
         /// </summary>
-        internal static string StockManagementMenu_Button_Cancel {
+        public static string StockManagementMenu_Button_Cancel {
             get {
                 return ResourceManager.GetString("StockManagementMenu_Button_Cancel", resourceCulture);
             }
@@ -450,7 +459,7 @@ namespace Localisation.Localisation {
         /// <summary>
         ///   Looks up a localized string similar to Count.
         /// </summary>
-        internal static string StockManagementMenu_Button_Count {
+        public static string StockManagementMenu_Button_Count {
             get {
                 return ResourceManager.GetString("StockManagementMenu_Button_Count", resourceCulture);
             }
@@ -459,7 +468,7 @@ namespace Localisation.Localisation {
         /// <summary>
         ///   Looks up a localized string similar to Count selection: .
         /// </summary>
-        internal static string StockManagementMenu_Button_CountSelection {
+        public static string StockManagementMenu_Button_CountSelection {
             get {
                 return ResourceManager.GetString("StockManagementMenu_Button_CountSelection", resourceCulture);
             }
@@ -468,7 +477,7 @@ namespace Localisation.Localisation {
         /// <summary>
         ///   Looks up a localized string similar to Delete filters.
         /// </summary>
-        internal static string StockManagementMenu_Button_DeleteFilters {
+        public static string StockManagementMenu_Button_DeleteFilters {
             get {
                 return ResourceManager.GetString("StockManagementMenu_Button_DeleteFilters", resourceCulture);
             }
@@ -477,7 +486,7 @@ namespace Localisation.Localisation {
         /// <summary>
         ///   Looks up a localized string similar to Export table.
         /// </summary>
-        internal static string StockManagementMenu_Button_ExportData {
+        public static string StockManagementMenu_Button_ExportData {
             get {
                 return ResourceManager.GetString("StockManagementMenu_Button_ExportData", resourceCulture);
             }
@@ -486,7 +495,7 @@ namespace Localisation.Localisation {
         /// <summary>
         ///   Looks up a localized string similar to Import data.
         /// </summary>
-        internal static string StockManagementMenu_Button_ImportData {
+        public static string StockManagementMenu_Button_ImportData {
             get {
                 return ResourceManager.GetString("StockManagementMenu_Button_ImportData", resourceCulture);
             }
@@ -495,7 +504,7 @@ namespace Localisation.Localisation {
         /// <summary>
         ///   Looks up a localized string similar to OK.
         /// </summary>
-        internal static string StockManagementMenu_Button_Ok {
+        public static string StockManagementMenu_Button_Ok {
             get {
                 return ResourceManager.GetString("StockManagementMenu_Button_Ok", resourceCulture);
             }
@@ -504,7 +513,7 @@ namespace Localisation.Localisation {
         /// <summary>
         ///   Looks up a localized string similar to Records found: .
         /// </summary>
-        internal static string StockManagementMenu_Button_RecordsFound {
+        public static string StockManagementMenu_Button_RecordsFound {
             get {
                 return ResourceManager.GetString("StockManagementMenu_Button_RecordsFound", resourceCulture);
             }
@@ -513,7 +522,7 @@ namespace Localisation.Localisation {
         /// <summary>
         ///   Looks up a localized string similar to Application directory.
         /// </summary>
-        internal static string StockManagementMenu_Button_RootFolder {
+        public static string StockManagementMenu_Button_RootFolder {
             get {
                 return ResourceManager.GetString("StockManagementMenu_Button_RootFolder", resourceCulture);
             }
@@ -522,7 +531,7 @@ namespace Localisation.Localisation {
         /// <summary>
         ///   Looks up a localized string similar to Save changes.
         /// </summary>
-        internal static string StockManagementMenu_Button_SaveChanges {
+        public static string StockManagementMenu_Button_SaveChanges {
             get {
                 return ResourceManager.GetString("StockManagementMenu_Button_SaveChanges", resourceCulture);
             }
@@ -531,7 +540,7 @@ namespace Localisation.Localisation {
         /// <summary>
         ///   Looks up a localized string similar to Settings.
         /// </summary>
-        internal static string StockManagementMenu_Button_Settings {
+        public static string StockManagementMenu_Button_Settings {
             get {
                 return ResourceManager.GetString("StockManagementMenu_Button_Settings", resourceCulture);
             }
@@ -540,7 +549,7 @@ namespace Localisation.Localisation {
         /// <summary>
         ///   Looks up a localized string similar to Sort ascending.
         /// </summary>
-        internal static string StockManagementMenu_Button_SortAscending {
+        public static string StockManagementMenu_Button_SortAscending {
             get {
                 return ResourceManager.GetString("StockManagementMenu_Button_SortAscending", resourceCulture);
             }
@@ -549,7 +558,7 @@ namespace Localisation.Localisation {
         /// <summary>
         ///   Looks up a localized string similar to Sort descending.
         /// </summary>
-        internal static string StockManagementMenu_Button_SortDescending {
+        public static string StockManagementMenu_Button_SortDescending {
             get {
                 return ResourceManager.GetString("StockManagementMenu_Button_SortDescending", resourceCulture);
             }
@@ -558,7 +567,7 @@ namespace Localisation.Localisation {
         /// <summary>
         ///   Looks up a localized string similar to Sum.
         /// </summary>
-        internal static string StockManagementMenu_Button_Sum {
+        public static string StockManagementMenu_Button_Sum {
             get {
                 return ResourceManager.GetString("StockManagementMenu_Button_Sum", resourceCulture);
             }
@@ -567,7 +576,7 @@ namespace Localisation.Localisation {
         /// <summary>
         ///   Looks up a localized string similar to Sum selection: .
         /// </summary>
-        internal static string StockManagementMenu_Button_SumSelection {
+        public static string StockManagementMenu_Button_SumSelection {
             get {
                 return ResourceManager.GetString("StockManagementMenu_Button_SumSelection", resourceCulture);
             }
@@ -576,7 +585,7 @@ namespace Localisation.Localisation {
         /// <summary>
         ///   Looks up a localized string similar to Manage unused values.
         /// </summary>
-        internal static string StockManagementMenu_Button_UnusedValues {
+        public static string StockManagementMenu_Button_UnusedValues {
             get {
                 return ResourceManager.GetString("StockManagementMenu_Button_UnusedValues", resourceCulture);
             }
@@ -585,7 +594,7 @@ namespace Localisation.Localisation {
         /// <summary>
         ///   Looks up a localized string similar to Update.
         /// </summary>
-        internal static string StockManagementMenu_Button_Update {
+        public static string StockManagementMenu_Button_Update {
             get {
                 return ResourceManager.GetString("StockManagementMenu_Button_Update", resourceCulture);
             }
@@ -594,7 +603,7 @@ namespace Localisation.Localisation {
         /// <summary>
         ///   Looks up a localized string similar to Select all.
         /// </summary>
-        internal static string StockManagementMenu_CheckBox_SelectAll {
+        public static string StockManagementMenu_CheckBox_SelectAll {
             get {
                 return ResourceManager.GetString("StockManagementMenu_CheckBox_SelectAll", resourceCulture);
             }
@@ -603,7 +612,7 @@ namespace Localisation.Localisation {
         /// <summary>
         ///   Looks up a localized string similar to A new sheet has been added, please click here to fill it with data..
         /// </summary>
-        internal static string StockManagementMenu_NewSheetAdded {
+        public static string StockManagementMenu_NewSheetAdded {
             get {
                 return ResourceManager.GetString("StockManagementMenu_NewSheetAdded", resourceCulture);
             }
@@ -612,7 +621,7 @@ namespace Localisation.Localisation {
         /// <summary>
         ///   Looks up a localized string similar to Sheet.
         /// </summary>
-        internal static string StockManagementMenu_TabPage_SheetTitle {
+        public static string StockManagementMenu_TabPage_SheetTitle {
             get {
                 return ResourceManager.GetString("StockManagementMenu_TabPage_SheetTitle", resourceCulture);
             }
@@ -621,7 +630,7 @@ namespace Localisation.Localisation {
         /// <summary>
         ///   Looks up a localized string similar to Application update.
         /// </summary>
-        internal static string Updater_ApplicationUpdate {
+        public static string Updater_ApplicationUpdate {
             get {
                 return ResourceManager.GetString("Updater_ApplicationUpdate", resourceCulture);
             }
@@ -630,7 +639,7 @@ namespace Localisation.Localisation {
         /// <summary>
         ///   Looks up a localized string similar to The update process was successful.
         /// </summary>
-        internal static string Updater_ApplicationUpdateMessage {
+        public static string Updater_ApplicationUpdateMessage {
             get {
                 return ResourceManager.GetString("Updater_ApplicationUpdateMessage", resourceCulture);
             }

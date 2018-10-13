@@ -21,7 +21,6 @@ using DocumentFormat.OpenXml.Spreadsheet;
 using StockManagementCore;
 using Updater;
 using System.Threading;
-using System.Globalization;
 using System.Drawing.Design;
 using System.Resources;
 
@@ -42,9 +41,6 @@ namespace StockManagement
         // *************************
         // *************************
         // *************************
-
-        // Localisation
-        public ResourceManager Localisation { get; set; } = null;
 
         // Integers
         private short topDifference = 0;                                                    // Integer for moving the form (top difference)
@@ -264,7 +260,7 @@ namespace StockManagement
             // Set all text regarding the current culture info
             SetLocalisation();
 
-            TabSheetHolder.TabPages[0].Text = Localisation.GetString("StockManagementMenu_TabPage_SheetTitle") + tabPageCount;
+            TabSheetHolder.TabPages[0].Text = Localisation.Localisation.strings.StockManagementMenu_TabPage_SheetTitle + tabPageCount;
 
             // First settings, like location and other stuff
             LocationAndPrimarySettings();
@@ -1611,7 +1607,7 @@ namespace StockManagement
                 Label NewSheetAddedMessage = new Label() { Name = "AddLabel" };              
 
                 tabPageCount++;             // Increment the sheet counter for continuously sheet counting
-                TabSheetHolder.TabPages.Add(Localisation.GetString("StockManagementMenu_TabPage_SheetTitle") + tabPageCount);
+                TabSheetHolder.TabPages.Add(Localisation.Localisation.strings.StockManagementMenu_TabPage_SheetTitle + tabPageCount);
                 TabSheetHolder.TabPages[TabSheetHolder.TabPages.Count - 1].Controls.Add(NewSheetDataGridView);
                 TabSheetHolder.TabPages[TabSheetHolder.TabPages.Count - 1].Controls.Add(NewSheetAddedMessage);
 
@@ -1629,7 +1625,7 @@ namespace StockManagement
                 NewSheetAddedMessage.Cursor = Cursors.Hand;
 
                 // Format the label
-                NewSheetAddedMessage.Text = Localisation.GetString("StockManagementMenu_NewSheetAdded");
+                NewSheetAddedMessage.Text = Localisation.Localisation.strings.StockManagementMenu_NewSheetAdded;
                 NewSheetAddedMessage.Font = new System.Drawing.Font(NewSheetAddedMessage.Font.FontFamily, 25);
                 NewSheetAddedMessage.AutoSize = true;
                 NewSheetAddedMessage.Left = (TabSheetHolder.Width - NewSheetAddedMessage.Width) / 2;
@@ -1705,7 +1701,7 @@ namespace StockManagement
 
                 SettingsMenu.ConfugurationFileLocking = ConfugurationFileLocking;
                 SettingsMenu.ConfigurationFileExists = DoesConfigurationFileExist;
-                SettingsMenu.Localisation = this.Localisation;
+                //SettingsMenu.Localisation = this.Localisation;
                 
                 SettingsMenu.StockManagementMenu = this;
                 SettingsMenu.SeachWindowMenu = SearchWindowMenu;
@@ -1743,8 +1739,8 @@ namespace StockManagement
             {
                 ContextMenuStrip rightClickMenu = new System.Windows.Forms.ContextMenuStrip();
 
-                rightClickMenu.Items.Add(Localisation.GetString("StockManagementMenu_Button_Sum")).Name = "sum";
-                rightClickMenu.Items.Add(Localisation.GetString("StockManagementMenu_Button_Count")).Name = "count";
+                rightClickMenu.Items.Add(Localisation.Localisation.strings.StockManagementMenu_Button_Sum).Name = "sum";
+                rightClickMenu.Items.Add(Localisation.Localisation.strings.StockManagementMenu_Button_Count).Name = "count";
 
                 rightClickMenu.ItemClicked += new ToolStripItemClickedEventHandler((_sender, _e) => RightClickMenu_ItemClicked(_sender, _e, CurrentSheetGrid, ref barStatusSheetOne, ref StatusBarSelectionMenu));
 
@@ -2142,9 +2138,9 @@ namespace StockManagement
                             {
                                 // TODO: Localize it
                                 sheetOneDatatable.Columns.Add(tabulator);
-                                sheetOneDatatable.Columns.Add(Localisation.GetString("AppText_Comment"));
-                                sheetOneDatatable.Columns.Add(Localisation.GetString("AppText_LastStocktaking"));
-                                sheetOneDatatable.Columns.Add(Localisation.GetString("AppText_StocktakingOverview"));
+                                sheetOneDatatable.Columns.Add(Localisation.Localisation.strings.AppText_Comment);
+                                sheetOneDatatable.Columns.Add(Localisation.Localisation.strings.AppText_LastStocktaking);
+                                sheetOneDatatable.Columns.Add(Localisation.Localisation.strings.AppText_StocktakingOverview);
                                 sheetOneDatatable.Columns.Add("Sorting", typeof(int));
                             }
                             else if (lineCounter == 1)
@@ -2251,7 +2247,7 @@ namespace StockManagement
             //PanelFilterWindow.LostFocus += new EventHandler(filterPanel_LostFocus);
 
             //ContainingPanel.Visible = true;
-            StatusBarRecordsFound.Text = Localisation.GetString("StockManagementMenu_Button_RecordsFound") + DefaultDataGrid.Rows.Count;
+            StatusBarRecordsFound.Text = Localisation.Localisation.strings.StockManagementMenu_Button_RecordsFound + DefaultDataGrid.Rows.Count;
 
             // TODO: use this variable
             CurrentSheetIndexPublic = 1;
@@ -2269,28 +2265,28 @@ namespace StockManagement
         public void SetLocalisation()
         {
             // Set the localisation
-            this.Text = Localisation.GetString("MainMenu_Button_StockManagementButton");
+            this.Text = Localisation.Localisation.strings.MainMenu_Button_StockManagementButton;
 
-            TitleBarSaveChanges.Text = Localisation.GetString("StockManagementMenu_Button_SaveChanges");
-            TitleBarDeleteFilters.Text = Localisation.GetString("StockManagementMenu_Button_DeleteFilters");
-            TitleBarAdvancedSearch.Text = Localisation.GetString("StockManagementMenu_Button_AdvancedSearch");
-            TitleBarBasicSearch.Text = Localisation.GetString("StockManagementMenu_Button_BasicSearch");
-            TitleBarUnusedValues.Text = Localisation.GetString("StockManagementMenu_Button_UnusedValues");
-            TitleBarExportData.Text = Localisation.GetString("StockManagementMenu_Button_ExportData");
-            TitleBarImportData.Text = Localisation.GetString("StockManagementMenu_Button_ImportData");
-            TitleBarUpdate.Text = Localisation.GetString("StockManagementMenu_Button_Update");
-            TitleBarAbout.Text = Localisation.GetString("StockManagementMenu_Button_About");
-            TitleBarSettings.Text = Localisation.GetString("StockManagementMenu_Button_Settings");
-            TitleBarRootFolder.Text = Localisation.GetString("StockManagementMenu_Button_RootFolder");
+            TitleBarSaveChanges.Text = Localisation.Localisation.strings.StockManagementMenu_Button_SaveChanges;
+            TitleBarDeleteFilters.Text = Localisation.Localisation.strings.StockManagementMenu_Button_DeleteFilters;
+            TitleBarAdvancedSearch.Text = Localisation.Localisation.strings.StockManagementMenu_Button_AdvancedSearch;
+            TitleBarBasicSearch.Text = Localisation.Localisation.strings.StockManagementMenu_Button_BasicSearch;
+            TitleBarUnusedValues.Text = Localisation.Localisation.strings.StockManagementMenu_Button_UnusedValues;
+            TitleBarExportData.Text = Localisation.Localisation.strings.StockManagementMenu_Button_ExportData;
+            TitleBarImportData.Text = Localisation.Localisation.strings.StockManagementMenu_Button_ImportData;
+            TitleBarUpdate.Text = Localisation.Localisation.strings.StockManagementMenu_Button_Update;
+            TitleBarAbout.Text = Localisation.Localisation.strings.StockManagementMenu_Button_About;
+            TitleBarSettings.Text = Localisation.Localisation.strings.StockManagementMenu_Button_Settings;
+            TitleBarRootFolder.Text = Localisation.Localisation.strings.StockManagementMenu_Button_RootFolder;
 
-            StatusBarRecordsFound.Text = Localisation.GetString("StockManagementMenu_Button_RecordsFound") + CurrentSheetGrid.Rows.Count;
-            StatusBarSelectionMenu.Text = Localisation.GetString("StockManagementMenu_Button_SumSelection");
+            StatusBarRecordsFound.Text = Localisation.Localisation.strings.StockManagementMenu_Button_RecordsFound + CurrentSheetGrid.Rows.Count;
+            StatusBarSelectionMenu.Text = Localisation.Localisation.strings.StockManagementMenu_Button_SumSelection;
 
-            SortColumnAscending.Text = Localisation.GetString("StockManagementMenu_Button_SortAscending");
-            SortColumnDescending.Text = Localisation.GetString("StockManagementMenu_Button_SortDescending");
-            AllFilterCheck.Text = Localisation.GetString("StockManagementMenu_CheckBox_SelectAll");
-            FilterOk.Text = Localisation.GetString("StockManagementMenu_Button_Ok");
-            FilterCancel.Text = Localisation.GetString("StockManagementMenu_Button_Cancel");
+            SortColumnAscending.Text = Localisation.Localisation.strings.StockManagementMenu_Button_SortAscending;
+            SortColumnDescending.Text = Localisation.Localisation.strings.StockManagementMenu_Button_SortDescending;
+            AllFilterCheck.Text = Localisation.Localisation.strings.StockManagementMenu_CheckBox_SelectAll;
+            FilterOk.Text = Localisation.Localisation.strings.StockManagementMenu_Button_Ok;
+            FilterCancel.Text = Localisation.Localisation.strings.StockManagementMenu_Button_Cancel;
         }
 
         private void SearchFunction(DataGridView _passedDataGridView)
@@ -2457,7 +2453,7 @@ namespace StockManagement
 
                 UpdateSheetOne();
 
-                StatusBarRecordsFound.Text = Localisation.GetString("StockManagementMenu_Button_RecordsFound") + DefaultDataGrid.Rows.Count;
+                StatusBarRecordsFound.Text = Localisation.Localisation.strings.StockManagementMenu_Button_RecordsFound + DefaultDataGrid.Rows.Count;
             }
 
             PanelFilterWindow.Visible = false;
@@ -2473,7 +2469,7 @@ namespace StockManagement
 
             UpdateSheetOne();
 
-            StatusBarRecordsFound.Text = Localisation.GetString("StockManagementMenu_Button_RecordsFound") + DefaultDataGrid.Rows.Count;
+            StatusBarRecordsFound.Text = Localisation.Localisation.strings.StockManagementMenu_Button_RecordsFound + DefaultDataGrid.Rows.Count;
         }
 
         /// <summary>
@@ -2912,7 +2908,7 @@ namespace StockManagement
                         }
                     }
 
-                    _passedBarText.Text = Localisation.GetString("StockManagementMenu_Button_SumSelection") + (selectedCellsSumAndCount == 0 ? "" : selectedCellsSumAndCount.ToString());
+                    _passedBarText.Text = Localisation.Localisation.strings.StockManagementMenu_Button_SumSelection + (selectedCellsSumAndCount == 0 ? "" : selectedCellsSumAndCount.ToString());
                 }
                 break;
                 case BarStatusState.Count:
@@ -2925,7 +2921,7 @@ namespace StockManagement
                         }
                     }
 
-                    _passedBarText.Text = Localisation.GetString("StockManagementMenu_Button_CountSelection") + (selectedCellsSumAndCount == 0 ? "" : selectedCellsSumAndCount.ToString());
+                    _passedBarText.Text = Localisation.Localisation.strings.StockManagementMenu_Button_CountSelection + (selectedCellsSumAndCount == 0 ? "" : selectedCellsSumAndCount.ToString());
                 }
                 break;
                 default:

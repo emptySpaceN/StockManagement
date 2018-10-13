@@ -73,7 +73,7 @@ namespace StockManagement
             {
                 case FileFormat.None:
                 {
-                    MessageBox.Show(StockManagementMenu.Localisation.GetString("FileImport_FileChoose"), StockManagementMenu.Localisation.GetString("FileImport_ImportError"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(Localisation.Localisation.strings.FileImport_FileChoose, Localisation.Localisation.strings.FileImport_ImportError, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 break;
                 case FileFormat.CSV:
@@ -219,18 +219,18 @@ namespace StockManagement
             }
 
             // Set all the control's text's
-            this.Text = StockManagementMenu.Localisation.GetString("FileImportTitle");
+            this.Text = Localisation.Localisation.strings.FileImportTitle;
 
-            FileImportTitle.Text = StockManagementMenu.Localisation.GetString("FileImport_Heading");
-            HasColumnNamesCsvTxt.Text = StockManagementMenu.Localisation.GetString("FileImport_ColumnNames");
-            DelimiterCsvTxt.Text = StockManagementMenu.Localisation.GetString("FileImport_DelimiterCsvTxt");
+            FileImportTitle.Text = Localisation.Localisation.strings.FileImport_Heading;
+            HasColumnNamesCsvTxt.Text = Localisation.Localisation.strings.FileImport_ColumnNames;
+            DelimiterCsvTxt.Text = Localisation.Localisation.strings.FileImport_DelimiterCsvTxt;
 
-            XlsxSheetTitle.Text = StockManagementMenu.Localisation.GetString("FileImport_Sheet");
+            XlsxSheetTitle.Text = Localisation.Localisation.strings.FileImport_Sheet;
 
-            SelectedFileFormat.Text = StockManagementMenu.Localisation.GetString("FileImport_FileFormat");
-            SelectedFilePath.Text = StockManagementMenu.Localisation.GetString("FileImport_FilePath");
-            ChooseFile.Text = StockManagementMenu.Localisation.GetString("FileImport_BrowseFile");
-            ImportData.Text = StockManagementMenu.Localisation.GetString("FileImport_ImportData");
+            SelectedFileFormat.Text = Localisation.Localisation.strings.FileImport_FileFormat;
+            SelectedFilePath.Text = Localisation.Localisation.strings.FileImport_FilePath;
+            ChooseFile.Text = Localisation.Localisation.strings.FileImport_BrowseFile;
+            ImportData.Text = Localisation.Localisation.strings.FileImport_ImportData;
         }
 
         private void GetCSVFilePath()

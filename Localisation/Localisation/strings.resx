@@ -138,6 +138,9 @@
   <data name="AppText_StocktakingOverview" xml:space="preserve">
     <value>Stocktaking overview</value>
   </data>
+  <data name="asdasdasdasdasd" xml:space="preserve">
+    <value />
+  </data>
   <data name="FileImportTitle" xml:space="preserve">
     <value>Import file</value>
   </data>

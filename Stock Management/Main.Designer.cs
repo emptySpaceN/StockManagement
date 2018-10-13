@@ -71,7 +71,7 @@
             this.SettingsButton.Name = "SettingsButton";
             this.SettingsButton.Size = new System.Drawing.Size(350, 123);
             this.SettingsButton.TabIndex = 8;
-            this.SettingsButton.Text = "_settings";
+            this.SettingsButton.Text = "Settings";
             this.SettingsButton.TextPosition = CustomButton.ButtonTextAlign.MiddleCenter;
             this.SettingsButton.UseVisualStyleBackColor = true;
             this.SettingsButton.Click += new System.EventHandler(this.Settings_Click);
@@ -85,7 +85,7 @@
             this.StockManagementButton.Name = "StockManagementButton";
             this.StockManagementButton.Size = new System.Drawing.Size(359, 119);
             this.StockManagementButton.TabIndex = 5;
-            this.StockManagementButton.Text = "_stockManagement";
+            this.StockManagementButton.Text = "Stock Management";
             this.StockManagementButton.TextPosition = CustomButton.ButtonTextAlign.MiddleCenter;
             this.StockManagementButton.Click += new System.EventHandler(this.StockManagement_Click);
             // 

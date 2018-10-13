@@ -44,7 +44,9 @@ namespace StockManagementCore
 
         public static string GetExecutingDirectoryName()
         {
-            return Environment.CurrentDirectory+ "\\";
+            return Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\";
+            // TODO: Not needed anymore
+            //return Environment.CurrentDirectory+ "\\";
         }
 
         // TODO: There is an input box in the StockManagement class - choose one of those two and delete the other
@@ -111,14 +113,13 @@ namespace StockManagementCore
                         _passedDataGridView.Columns[_PassedColumnIndex].DefaultCellStyle.Format = "dd.MM.yyyy";
 
 
-                        foreach (DataGridViewRow asd in _passedDataGridView.Rows)
+                        foreach (DataGridViewRow currentRow in _passedDataGridView.Rows)
                         {
-                            DateTime asdasdasd = new DateTime();
-                            if (DateTime.TryParse(_passedDataGridView.Rows[asd.Index].Cells[_PassedColumnIndex].Value.ToString(), out asdasdasd))
+                            if (DateTime.TryParse(_passedDataGridView.Rows[currentRow.Index].Cells[_PassedColumnIndex].Value.ToString(), out DateTime bufferDateTime))
                             {
-                                DebugWrite(_passedDataGridView.Rows[asd.Index].Cells[_PassedColumnIndex].ValueType);
-                                _passedDataGridView.Rows[asd.Index].Cells[_PassedColumnIndex].ValueType = typeof(DateTime);
-                                _passedDataGridView.Rows[asd.Index].Cells[_PassedColumnIndex].Value = Convert.ToDateTime(_passedDataGridView.Rows[asd.Index].Cells[_PassedColumnIndex].Value.ToString()).ToString("dd.MM.yyyy");
+                                DebugWrite(_passedDataGridView.Rows[currentRow.Index].Cells[_PassedColumnIndex].ValueType);
+                                _passedDataGridView.Rows[currentRow.Index].Cells[_PassedColumnIndex].ValueType = typeof(DateTime);
+                                _passedDataGridView.Rows[currentRow.Index].Cells[_PassedColumnIndex].Value = Convert.ToDateTime(_passedDataGridView.Rows[currentRow.Index].Cells[_PassedColumnIndex].Value.ToString()).ToString("dd.MM.yyyy");
                             }
 
                             ;

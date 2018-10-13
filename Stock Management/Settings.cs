@@ -30,8 +30,6 @@ namespace StockManagement
         // *************************
         // *************************
 
-        public ResourceManager Localisation { get; set; } = null;
-
         private Dictionary<string, int> delimiters = null;
         public bool ConfigurationFileExists { get; set; } = false;
 
@@ -144,7 +142,7 @@ namespace StockManagement
             }
             else
             {
-                MessageBox.Show(Localisation.GetString("SettingsMenu_ValidFile"));
+                MessageBox.Show(Localisation.Localisation.strings.SettingsMenu_ValidFile);
 
                 e.Cancel = true;
             }
@@ -333,7 +331,7 @@ namespace StockManagement
             {
                 mainSheet.Multiselect = false;
 
-                mainSheet.Title = Localisation.GetString("SettingsMenu_FileDilalogCustomerFile");
+                mainSheet.Title = Localisation.Localisation.strings.SettingsMenu_FileDilalogCustomerFile;
                 mainSheet.InitialDirectory = Application.StartupPath;
                 mainSheet.FileName = "";
                 mainSheet.Filter = "txt files (*.txt)|*.txt";
@@ -460,16 +458,16 @@ namespace StockManagement
             // Initialize the configuration file
             if (!_SkipSettingsInitialization) { InitializeSettingsFile(); }
 
-            this.Text = Localisation.GetString("SettingsMenuTitle");
+            this.Text = Localisation.Localisation.strings.SettingsMenuTitle;
 
-            DataFileTitle.Text = Localisation.GetString("SettingsMenu_BrowseFileTitle");
-            BrowseDataFile.Text = Localisation.GetString("SettingsMenu_BrowseFile");
+            DataFileTitle.Text = Localisation.Localisation.strings.SettingsMenu_BrowseFileTitle;
+            BrowseDataFile.Text = Localisation.Localisation.strings.SettingsMenu_BrowseFile;
 
-            AdditionalSettingsGroup.Text = Localisation.GetString("SettingsMenu_GroupBox_AdditionalSettings");
-            LanguageTitle.Text = Localisation.GetString("SettingsMenu_Language");
-            DelimiterTitle.Text = Localisation.GetString("SettingsMenu_Delimiter");
+            AdditionalSettingsGroup.Text = Localisation.Localisation.strings.SettingsMenu_GroupBox_AdditionalSettings;
+            LanguageTitle.Text = Localisation.Localisation.strings.SettingsMenu_Language;
+            DelimiterTitle.Text = Localisation.Localisation.strings.SettingsMenu_Delimiter;
 
-            DataPreviewTitle.Text = Localisation.GetString("SettingsMenu_DataPreview");
+            DataPreviewTitle.Text = Localisation.Localisation.strings.SettingsMenu_DataPreview;
         }
 
         private void InitializeSettingsFile()

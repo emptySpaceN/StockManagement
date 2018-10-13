@@ -15,14 +15,13 @@ namespace Updater
 {
     public class DirectUpdate
     {
-
         #region Variables
         public static List<Track> GetOnlineFileList { get; private set; } = null;
         public static List<string> GetApplicationFileList { get; private set; } = null;
         public static List<string> GetTemporaryFileList { get; private set; } = null;
         public static WebClient GetClient { get; private set; } = null;
 
-        private static string applicationConfigurationFile = CoreFunctions.GetExecutingDirectoryName() + "config\\configuration.xml";
+        private static string applicationConfigurationFile = @"C:\Development\Visual Studio\Projects\Stock Management\Stock Management\bin\x86\Debug\config\configuration.xml";// CoreFunctions.GetExecutingDirectoryName() + "config\\configuration.xml";
         private static string assemblyPath = CoreFunctions.GetExecutingDirectoryName() + "Localisation.dll";
         private static ResourceManager localisation = null;
 
@@ -70,7 +69,7 @@ namespace Updater
                 {
                     if (!GetUpdateFiles(GetClient, GetOnlineFileList, GetApplicationFileList, GetTemporaryFileList, false))
                     {
-                        // TOTO: Insert a message box with any message
+                        // TOTO: Insert a message box with a message
                         GetClient.Dispose();
                         return;
                     }
@@ -135,6 +134,7 @@ namespace Updater
             catch (Exception _error)
             {
                 // TODO: Write imediately to the XML file and set a protocol entry that there was no language
+                MessageBox.Show(_error.Message + " - " + applicationConfigurationFile);
                 retrievedLanguage = "English";
             }
 
@@ -162,7 +162,7 @@ namespace Updater
 
         public static void InitFileCollection()
         {
-            string[] fileList = new string[5];           // List that holds the file names on the server
+            string[] fileList = null;           // List that holds the file names on the server
             string updateFilesServerPath = "https://github.com/emptySpaceN/StockManagement/releases/download/ReleaseVersion/";    // Holds the path for the update files
 
             GetOnlineFileList = new List<Track>();
@@ -171,12 +171,17 @@ namespace Updater
             GetClient = new WebClient();
 
             // Fill the online file list
-            fileList[0] = "StockManagement.exe";
-            fileList[1] = "StockManagementCore.dll";
-            fileList[2] = "Localisation.dll";
-            fileList[3] = "UpdateHelper.exe";
-            fileList[4] = "Updater.exe";
-
+            fileList = new string[]
+            {
+                "DocumentFormat.OpenXml.dll",
+                "Localisation.dll",
+                "Localisation.resources.dll",
+                "StockManagement.exe",
+                "StockManagementCore.dll",
+                "UpdateHelper.exe",
+                "Updater.exe"
+            };
+            
             for (int i = 0; i < fileList.Length; i++)
             {
                 GetOnlineFileList.Add(new Track
@@ -197,11 +202,12 @@ namespace Updater
             {
                 FileInfo fileInformation = new FileInfo(currentFile);
                 FileVersionInfo currentFileVersionInfo = FileVersionInfo.GetVersionInfo(fileInformation.FullName.ToString());
-
-                if (currentFileVersionInfo.FileDescription == "Stock Management")
+                
+                if (currentFileVersionInfo.FileDescription == "Stock Management" || currentFileVersionInfo.FileDescription == "DocumentFormat.OpenXml")
                 {
                     _passedApplicationFileList.Add(fileInformation.Name);
                 }
+
             }
 
             // Always add the UpdateHelper.exe to the end; it helps during the update process to update the Update.exe itself
@@ -212,12 +218,12 @@ namespace Updater
                     if (_passedOnlineFileList[i].ApplicationName == _passedApplicationFileList[j])
                     {
                         temporaryFileName = Path.GetTempPath() + "_temp" + DateTime.Now.ToString("_dd.MM.yyyy_HH-mm-ss_") + _passedApplicationFileList[j];
-                        
+                        Debug.Print(temporaryFileName);
                         _passedClient.DownloadFile(_passedOnlineFileList[i].DownloadAddress, temporaryFileName);
                         
                         temporaryVersion = Int32.Parse(FileVersionInfo.GetVersionInfo(temporaryFileName).ProductVersion.Replace(".", string.Empty));
                         currentVersion = Int32.Parse(FileVersionInfo.GetVersionInfo(CoreFunctions.GetExecutingDirectoryName() + _passedApplicationFileList[j]).ProductVersion.Replace(".", string.Empty));
-
+                        Debug.Print("Temp version: " + temporaryVersion + " - Current version: " + currentVersion);
                         if (temporaryVersion <= currentVersion)
                         {
                             File.Delete(temporaryFileName);

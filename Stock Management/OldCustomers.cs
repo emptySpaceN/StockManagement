@@ -197,10 +197,10 @@ namespace StockManagement
             }
 
             // Set all the control's text's
-            this.Text = StockManagementMenu.Localisation.GetString("FileImportTitle");
+            this.Text = Localisation.Localisation.strings.FileImportTitle;
 
-            ReloadContent.Text = StockManagementMenu.Localisation.GetString("OldCustomersMenu_Button_ReloadData");
-            CloseForm.Text = StockManagementMenu.Localisation.GetString("OldCustomersMenu_Button_Close");
+            ReloadContent.Text = Localisation.Localisation.strings.OldCustomersMenu_Button_ReloadData;
+            CloseForm.Text = Localisation.Localisation.strings.OldCustomersMenu_Button_Close;
         }
 
         private void LoadContent()

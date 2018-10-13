@@ -1,15 +1,17 @@
 ﻿using StockManagementCore;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Resources;
 using System.Threading;
 using System.Windows.Forms;
 using System.Xml.Linq;
-using System.Linq;
-using System.Collections.Generic;
-using System.Resources;
-using System.Reflection;
+using System.Data.SQLite;
+
 
 namespace StockManagement
 {
@@ -40,8 +42,7 @@ namespace StockManagement
         private int moveFormYDifference = 0;
 
         // Localisation
-        private string assemblyPath = CoreFunctions.GetExecutingDirectoryName() + "Localisation.dll";
-        private ResourceManager localisation = null;
+        private string assemblyPath = CoreFunctions.GetExecutingDirectoryName() + "bin\\Localisation_en-US.dll";
 
         // Configuration file variables
         private string applicationConfigurationFile = CoreFunctions.GetExecutingDirectoryName() + "config\\configuration.xml";
@@ -74,84 +75,11 @@ namespace StockManagement
 
         public Main()
         {
-            // Check if libraries are available
-            if (!File.Exists("StockManagementCore.dll"))
-            {
-                MessageBox.Show("Die erforderliche Datei \"StockManagementCore.dll\" wurde nicht gefunden, das Programm wird nun beendet.", "Fehler beim Laden", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
-                this.Close();
-            }
-
-            if (!File.Exists("DocumentFormat.OpenXml.dll"))
-            {
-                MessageBox.Show("Die erforderliche Datei \"DocumentFormat.OpenXml.dll\" wurde nicht gefunden, das Programm wird nun beendet", "Fehler beim Laden", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
-                this.Close();
-            }
-
             // Application wide exception catcher (is used if no try-catch expression is used and an error occurs)
             AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CoreFunctions.UnhandledExceptionCatcher);
-
-            #region Configuration file locking and checking
-            confugurationFileLocking = new FileLocking();
-
-            // Try to lock the configuration file
-            if (File.Exists(applicationConfigurationFile))
-            {
-                if (confugurationFileLocking.OpenAndLock(applicationConfigurationFile, FileAccess.ReadWrite, FileShare.Read, ref applicationWideException))
-                {
-                    CreateBackup();
-
-                    // If there is no root element asign null to Xdoc
-                    try
-                    {
-                        xdoc = XDocument.Load(confugurationFileLocking.LockedFile);
-                    }
-                    catch (Exception _error)
-                    {
-                        xdoc = null;
-                        // TODO: Protocol it!
-                    }
-
-                    // If Xdoc equals null or not equals "ConfigFile" the whole document is about to be recreated
-                    if (xdoc != null)
-                    {
-                        if (xdoc.Root.Name == "ConfigFile")
-                        {
-                            ReadXMLConfiguration(true);
-                        }
-                        else
-                        {
-                            ReadXMLConfiguration(false);
-                        }
-                    }
-                    else
-                    {
-                        ReadXMLConfiguration(false);
-                    }
-
-                    // Set the current user of the program and save it to the configuration file
-                    xdoc.Element("ConfigFile").Element("ApplicationSettings").Element("GeneralSettings").Element("CurrentUser").Value = Environment.UserName;
-                    confugurationFileLocking.WriteXDocument(xdoc);
-                }
-                else
-                {
-                    xdoc = XDocument.Load(confugurationFileLocking.ReadFile(applicationConfigurationFile, ref applicationWideException));
-
-                    currentUser = xdoc.Element("ConfigFile").Element("ApplicationSettings").Element("GeneralSettings").Element("CurrentUser").Value.ToString();
-
-                    isConfigurationFileLocked = true;
-
-                    TrackNotificationFile();
-                }
-
-                doesConfigurationFileExists = true;
-            }
-            else
-            {
-                // Set the language to english because the configuration file is missing and english is the default language
-                Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("en-US");
-            }
-            #endregion
-
+            
+            DependenciesCheck();
+            
             InitializeComponent();
 
             // Form Events
@@ -195,13 +123,12 @@ namespace StockManagement
             // Screen resolution variables
             int screenWidth = Screen.FromControl(this).Bounds.Width;
             int screenHeight = Screen.FromControl(this).Bounds.Height;
-
+            
             // Form settings
             this.Width = 840; // screenWidth / 2;
             this.Height = 525; // screenHeight / 2;
             // TODO: Clear - this.Left = (screenWidth - this.Width) / 2;
             // TODO: Clear - this.Top = (screenHeight - this.Height) / 2;
-
 
             // Stock Management button Position
             StockManagementButton.Left = (this.Width - StockManagementButton.Width) / 2;
@@ -255,7 +182,7 @@ namespace StockManagement
                     ConfigurationFileExists = doesConfigurationFileExists,
                     ConfugurationFileLocking = null,
                     MainMenuPublic = this,
-                    Localisation = localisation,
+                    //Localisation = localisation,
 
                     // Program defined variables
                     Owner = this
@@ -284,7 +211,7 @@ namespace StockManagement
                     CurrentLanguage = (StockManagement.Languages)CurrentLanguagePublic,
                     FileLogging = fileLogging,
                     Xdoc = xdoc,
-                    Localisation = localisation,
+                    //Localisation = localisation,
 
                     // Program defined variables
                     Height = (screenHeigth / 10) * 9,
@@ -335,7 +262,7 @@ namespace StockManagement
                         CurrentLanguage = (StockManagement.Languages)CurrentLanguagePublic,
                         FileLogging = fileLogging,
                         Xdoc = xdoc,
-                        Localisation = localisation,
+                        //Localisation = localisation,
 
                         // Program defined variables
                         Height = (screenHeigth / 10) * 9,
@@ -363,7 +290,7 @@ namespace StockManagement
                             ConfigurationFileExists = doesConfigurationFileExists,
                             ConfugurationFileLocking = confugurationFileLocking,
                             MainMenuPublic = this,
-                            Localisation = localisation,
+                            //Localisation = localisation,
 
                             Owner = this,
                             StartPosition = FormStartPosition.CenterParent,
@@ -420,7 +347,7 @@ namespace StockManagement
                     ConfugurationFileLocking = confugurationFileLocking,
                     Xdoc = xdoc,
                     MainMenuPublic = this,
-                    Localisation = localisation,
+                    //Localisation = localisation,
                     
                     // Program defined variables
                     Owner = this
@@ -515,7 +442,6 @@ namespace StockManagement
         // Control: FileLockNotification
         private void FileLockNotification_Changed(object sender, FileSystemEventArgs e)
         {
-            MessageBox.Show("asdasd");
             if (isConfigurationFileLocked)
             {
                 // Try to lock the configuration file
@@ -545,6 +471,126 @@ namespace StockManagement
         #endregion
 
         #region Functions
+        private void DependenciesCheck()
+        {
+            SQLiteConnection.CreateFile("smDB.sqlite");
+
+            SQLiteConnection m_dbConnection = new SQLiteConnection("Data Source=smDB.sqlite;Version=3;");
+            m_dbConnection.Open();
+
+            string sql = "create table highscores (name varchar(20), score int)";
+
+            SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
+            command.ExecuteNonQuery();
+
+            sql = "insert into highscores (name, score) values ('Me', 9001)";
+
+            command = new SQLiteCommand(sql, m_dbConnection);
+            command.ExecuteNonQuery();
+
+            m_dbConnection.Close();
+
+            // Check if libraries are available
+            //if (!File.Exists(CoreFunctions.GetExecutingDirectoryName() + "StockManagementCore.dll"))
+            //{
+            //    MessageBox.Show("Die erforderliche Datei \"StockManagementCore.dll\" wurde nicht gefunden, das Programm wird nun beendet.", "Fehler beim Laden", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+            //    this.Close();
+            //}
+
+            // Check if the xlsx library exists
+            //if (!File.Exists(CoreFunctions.GetExecutingDirectoryName() + "DocumentFormat.OpenXml.dll"))
+            //{
+            //    MessageBox.Show("Die erforderliche Datei \"DocumentFormat.OpenXml.dll\" wurde nicht gefunden, das Programm wird nun beendet", "Fehler beim Laden", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+            //    this.Close();
+            //}
+
+            // Check if the english localisation library is available
+            //if (!File.Exists(CoreFunctions.GetExecutingDirectoryName() + "Localisation.dll"))
+            //{
+            //    MessageBox.Show("Die erforderliche Datei \"Localisation.dll\" wurde nicht gefunden, das Programm wird nun beendet", "Fehler beim Laden", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+            //    this.Close();
+            //}
+
+            // Check if the german localisation folder and library is available
+            //if (!Directory.Exists(CoreFunctions.GetExecutingDirectoryName() + "de"))
+            //{
+            //    Directory.CreateDirectory(CoreFunctions.GetExecutingDirectoryName() + "de");
+
+            //    MessageBox.Show("The folder for the german localisation does not exist, the folder will be created now but the localisation file is missing." + Environment.NewLine + "Do you want to download it now?", "Fehler beim Laden", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+            //}
+            //else
+            //{
+            //    if (!File.Exists(CoreFunctions.GetExecutingDirectoryName() + "de\\Localisation.resources.dll"))
+            //    {
+            //        MessageBox.Show("Die erforderliche Datei \"Localisation.resources..dll\" wurde nicht gefunden, das Programm wird nun beendet", "Fehler beim Laden", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+            //    }
+            //}
+
+
+
+            #region Configuration file locking and checking
+            confugurationFileLocking = new FileLocking();
+
+            // Try to lock the configuration file
+            if (File.Exists(applicationConfigurationFile))
+            {
+                if (confugurationFileLocking.OpenAndLock(applicationConfigurationFile, FileAccess.ReadWrite, FileShare.Read, ref applicationWideException))
+                {
+                    CreateBackup();
+
+                    // If there is no root element asign null to Xdoc
+                    try
+                    {
+                        xdoc = XDocument.Load(confugurationFileLocking.LockedFile);
+                    }
+                    catch (Exception _error)
+                    {
+                        xdoc = null;
+                        // TODO: Protocol it!
+                    }
+
+                    // If Xdoc equals null or not equals "ConfigFile" the whole document is about to be recreated
+                    if (xdoc != null)
+                    {
+                        if (xdoc.Root.Name == "ConfigFile")
+                        {
+                            ReadXMLConfiguration(true);
+                        }
+                        else
+                        {
+                            ReadXMLConfiguration(false);
+                        }
+                    }
+                    else
+                    {
+                        ReadXMLConfiguration(false);
+                    }
+
+                    // Set the current user of the program and save it to the configuration file
+                    xdoc.Element("ConfigFile").Element("ApplicationSettings").Element("GeneralSettings").Element("CurrentUser").Value = Environment.UserName;
+                    confugurationFileLocking.WriteXDocument(xdoc);
+                }
+                else
+                {
+                    xdoc = XDocument.Load(confugurationFileLocking.ReadFile(applicationConfigurationFile, ref applicationWideException));
+
+                    currentUser = xdoc.Element("ConfigFile").Element("ApplicationSettings").Element("GeneralSettings").Element("CurrentUser").Value.ToString();
+
+                    isConfigurationFileLocked = true;
+
+                    TrackNotificationFile();
+                }
+
+                doesConfigurationFileExists = true;
+            }
+            else
+            {
+                // Set the language to english because the configuration file is missing and english is the default language
+                Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("en-US");
+            }
+            #endregion
+        }
+
         private void TrackNotificationFile()
         {
             // Initialize the file watcher to track the current-user file
@@ -578,10 +624,10 @@ namespace StockManagement
             }
 
             // Initialise the localisation from the "Localisation.dll" assembly file
-            localisation = new ResourceManager("Localisation.Localisation.strings", Assembly.LoadFrom(assemblyPath));
+            //localisation = new ResourceManager("Localisation.Localisation.strings", Assembly.LoadFrom(assemblyPath));
 
-            StockManagementButton.Text = localisation.GetString("MainMenu_Button_StockManagementButton");
-            SettingsButton.Text = localisation.GetString("MainMenu_Button_SettingsButton");
+            StockManagementButton.Text = Localisation.Localisation.strings.MainMenu_Button_StockManagementButton;
+            SettingsButton.Text = Localisation.Localisation.strings.MainMenu_Button_SettingsButton;
         }
 
         private void GetLanguage()

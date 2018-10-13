@@ -46,7 +46,7 @@ namespace StockManagement
         // Control: EMailLink
         private void EMailLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start("mailto:" + StockManagementMenu.Localisation.GetString("AboutWindow_AuthorEmail"));
+            Process.Start("mailto:" + Localisation.Localisation.strings.AboutWindow_AuthorEmail);
         }
 
         // Control: CreatorLink
@@ -88,12 +88,12 @@ namespace StockManagement
             }
 
             // Set all the control's text's
-            this.Text = StockManagementMenu.Localisation.GetString("AboutWindowTitle");
+            this.Text = Localisation.Localisation.strings.AboutWindowTitle;
 
-            ApplicationName.Text = StockManagementMenu.Localisation.GetString("AboutWindow_ApplicationName");
+            ApplicationName.Text = Localisation.Localisation.strings.AboutWindow_ApplicationName;
             ApplicationVersion.Text = "Version: " + FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion;
-            AuthorE_MailTitle.Text = StockManagementMenu.Localisation.GetString("AboutWindow_Author");
-            AuthorE_MailLink.Text = StockManagementMenu.Localisation.GetString("AboutWindow_AuthorEmail");
+            AuthorE_MailTitle.Text = Localisation.Localisation.strings.AboutWindow_Author;
+            AuthorE_MailLink.Text = Localisation.Localisation.strings.AboutWindow_AuthorEmail;
         }
         #endregion
     }

@@ -57,13 +57,26 @@
     <ApplicationIcon>online-shop64.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DocumentFormat.OpenXml, Version=2.5.5631.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\OpenXml (Excel xlsx support)\DocumentFormat.OpenXml.dll</HintPath>
+    <Reference Include="DocumentFormat.OpenXml">
+      <HintPath>application_dll\DocumentFormat.OpenXml.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Localisation">
+      <HintPath>application_dll\Localisation.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="StockManagementCore">
+      <HintPath>application_dll\StockManagementCore.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.SQLite, Version=1.0.79.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>application_dll\System.Data.SQLite.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -210,14 +223,6 @@
     <None Include="Resources\F12_Save_32x96.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Localisation\Localisation.csproj">
-      <Project>{f9f75e32-66f4-4c8d-991f-f5d4e34cbbbc}</Project>
-      <Name>Localisation</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\StockManagementCore\StockManagementCore.csproj">
-      <Project>{8e416b1d-1dda-4b3d-bbb8-5d6f6bb75bd2}</Project>
-      <Name>StockManagementCore</Name>
-    </ProjectReference>
     <ProjectReference Include="..\UpdateHelper\UpdateHelper.csproj">
       <Project>{8098e4ab-e2d2-46fd-b7bf-e2c172c3fef2}</Project>
       <Name>UpdateHelper</Name>
@@ -228,6 +233,10 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy "$(ProjectDir)application_dll\DocumentFormat.OpenXml.dll" "$(TargetDir)bin\DocumentFormat.OpenXml.dll"
+copy "$(ProjectDir)application_dll\System.Data.SQLite.dll" "$(TargetDir)bin\System.Data.SQLite.dll"</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

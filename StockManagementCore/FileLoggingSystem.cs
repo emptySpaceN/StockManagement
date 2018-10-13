@@ -6,7 +6,7 @@ namespace StockManagementCore
     public class FileLoggingSystem
     {
         #region Variables
-        private string eventFile = CoreFunctions.GetExecutingDirectoryName() + "config\\protocol.log";
+        private string eventFile = CoreFunctions.GetExecutingDirectoryName() + "..\\config\\protocol.log";
         #endregion
 
         public void Log(string _loggingText)
