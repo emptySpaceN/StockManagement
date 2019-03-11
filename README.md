@@ -1,2 +1,1 @@
-# StockManagement.Release
-Testline
+# StockManagement
